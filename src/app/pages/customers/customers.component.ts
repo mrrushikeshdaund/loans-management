@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-customers',
@@ -7,11 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './customers.component.scss',
 })
 export class CustomersComponent implements OnInit {
-  async ngOnInit() {
-    const customersData = await getCustomersData();
-    console.log('getCustomersData', customersData);
+  customerList: any;
+  customerResults: any;
+  constructor(private customerService: CustomerService) {}
+  ngOnInit(): void {
+    this.getCustomerList();
   }
-}
-function getCustomersData() {
-  return fetch('http://localhost:3000/customers/list');
+  getCustomerList() {
+    this.customerService.getAllCustomers().subscribe((data) => {
+      this.customerResults = data;
+      this.customerList = this.customerResults.data;
+      console.log('get customers data :- ', this.customerList);
+    });
+  }
 }

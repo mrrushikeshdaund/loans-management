@@ -15,7 +15,14 @@ export class CustomerService {
     return this.httpClient.get(url);
   }
 
-  viewCustomer(id: string) {}
+  viewCustomer(id: string) {
+    let url =
+      environments.CUSTOMER_BASE_URL +
+      environments.CUSTOMER.GET_CUSTOMER +
+      '?userId=' +
+      id;
+    return this.httpClient.get(url);
+  }
 
   editCustomer(id: string, customerObj: any) {}
 

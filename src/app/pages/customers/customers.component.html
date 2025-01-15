@@ -45,7 +45,13 @@
           @for (item of customerList; track $index) {
           <tr>
             <td>
-              <a href="#">{{ item._id }}</a>
+              <a
+                style="color: blue; cursor: pointer"
+                (click)="handlePopUp(item._id)"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                >{{ item._id }}</a
+              >
             </td>
             <td>{{ item.firstName }}</td>
             <td>{{ item.lastName }}</td>
@@ -76,4 +82,91 @@
       </li>
     </ul>
   </nav>
+</div>
+
+<!-- Dialoag box-->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title fs-5">Customer ID :- {{ selectedCustomerId }}</p>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="align-input">
+          <input
+            class="form-control"
+            type="text"
+            value="{{ customerDetails?.firstName }}"
+            placeholder="First Name"
+            aria-label="default input example"
+          />
+        </div>
+        <div class="align-input">
+          <input
+            class="form-control"
+            type="text"
+            value="{{ customerDetails?.lastName }}"
+            placeholder="Last Name"
+            aria-label="default input example"
+          />
+        </div>
+        <div class="align-input">
+          <input
+            class="form-control"
+            type="email"
+            value="{{ customerDetails?.emailAddress }}"
+            placeholder="Email Address"
+            aria-label="default input example"
+          />
+        </div>
+        <div class="align-input">
+          <input
+            class="form-control"
+            type="date"
+            value="{{ customerDetails?.dob }}"
+            placeholder="Date Of Birth"
+            aria-label="default input example"
+          />
+        </div>
+        <div class="align-input">
+          <input
+            class="form-control"
+            type="text"
+            value="{{ customerDetails?.department }}"
+            placeholder="Department"
+            aria-label="default input example"
+          />
+        </div>
+        <div class="align-input">
+          <input
+            class="form-control"
+            type="number"
+            value="{{ customerDetails?.phoneNumber }}"
+            placeholder="Phone Number"
+            aria-label="default input example"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
 </div>

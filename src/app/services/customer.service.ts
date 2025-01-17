@@ -24,9 +24,26 @@ export class CustomerService {
     return this.httpClient.get(url);
   }
 
-  editCustomer(id: string, customerObj: any) {}
+  editCustomer(customerObj: any) {
+    let url =
+      environments.CUSTOMER_BASE_URL + environments.CUSTOMER.PUT_CUSTOMER;
+    return this.httpClient.put(url, customerObj);
+  }
 
-  deleteCustomer(id: string) {}
+  addCustomer(customerObj: any) {
+    let url =
+      environments.CUSTOMER_BASE_URL + environments.CUSTOMER.POST_CUSTOMER;
+    return this.httpClient.post(url, customerObj);
+  }
+
+  deleteCustomer(id: string) {
+    let url =
+      environments.CUSTOMER_BASE_URL +
+      environments.CUSTOMER.DELETE_CUSTOMER +
+      '?userId=' +
+      id;
+    return this.httpClient.delete(url);
+  }
 
   serachCustomer(key: string) {}
 }

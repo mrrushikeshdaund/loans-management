@@ -75,7 +75,7 @@ router.post("/add", async function (req, res, next) {
 /* Update Existing Customer */
 router.put("/update", async function (req, res, next) {
   try {
-    const userId = req.body.userId;
+    const userId = req.body._id;
     let customer = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,

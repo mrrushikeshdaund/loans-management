@@ -26,7 +26,6 @@ export class CustomersComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.getCustomerList();
-    this.filteredCustomerList = [...this.customerList];
   }
   getCustomerList() {
     this.customerService
@@ -35,6 +34,7 @@ export class CustomersComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.customerResults = data;
         this.customerList = this.customerResults.data;
+        this.filteredCustomerList = this.customerResults.data;
         console.log('get customers data :- ', this.customerList);
       });
   }
@@ -104,10 +104,14 @@ export class CustomersComponent implements OnInit, OnDestroy {
 
   handleSearchFilter(event: any) {
     const userInput = event.target.value.toLowerCase();
-    this.customerList = this.customerList.filter((customer: any) => {
+    console.log(this.filteredCustomerList);
+    this.customerList = this.filteredCustomerList.filter((customer: any) => {
       return (
         customer.firstName.toLowerCase().includes(userInput) ||
-        customer.lastName.toLowerCase().includes(userInput)
+        customer.lastName.toLowerCase().includes(userInput) ||
+        customer.emailAddress.toLowerCase().includes(userInput) ||
+        customer.department.toLowerCase().includes(userInput) ||
+        customer._id.toLowerCase().includes(userInput)
       );
     });
   }

@@ -48,4 +48,6 @@ router.post("/add", async function (req, res, next) {
   }
 });
 
+router.put("/update", async function (req, res, next) {});
+
 module.exports = router;

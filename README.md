@@ -50,7 +50,7 @@ Run the following command to generate Bootstrap components:
 ```bash
 mkdir express-generator
 cd express-generator
-npx express-genrator
+npx express-generator
 ```
 
 ### 4. **Backend Setup**

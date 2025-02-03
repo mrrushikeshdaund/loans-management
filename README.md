@@ -48,9 +48,9 @@ npm install bootstrap jquery @angular/material
 Run the following command to generate Bootstrap components:
 
 ```bash
-mkdir bootstrap-generator
-cd bootstrap-generator
-npx bootstrap-genrator
+mkdir express-generator
+cd express-generator
+npx express-genrator
 ```
 
 ### 4. **Backend Setup**
